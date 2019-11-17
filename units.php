@@ -77,7 +77,7 @@ body {
 <div id="main">
 <?php
 
-$connection = mysqli_connect("localhost","rot","","CSC316");
+$connection = mysqli_connect("localhost","root","","CSC316");
 
 
 $sql = "SELECT * FROM units";
@@ -99,7 +99,9 @@ if (mysqli_num_rows($result) > 0) {
     	echo "<td>".$row["UNIT_NAME"]."</td>";
     	echo "<td>".$row["UNIT_CODE"]."</td>";
     	echo "<td>".$row["UNIT_STATUS"]."</td>";
-    	echo "<td><button><a href=students.php?id=".$row["UNIT_ID"].">view Students</a></button></td>";
+    	echo "<td>"
+        . "<button><a href=students.php?id=".$row["UNIT_ID"].">View Students</a></button>"
+                . "</td>";
     	echo "</tr>";
           	
         // echo "ID: " . $row["UNIT_ID"]. " - Unit name: " . $row["UNIT_NAME"]. " Code" . $row["UNIT_CODE"]."Status: ".$row['UNIT_STATUS']. "
