@@ -74,6 +74,8 @@ body {
   <a href="students.php">Students</a>
 </div>
 
+<a class="btn btn-success" href="#" role="button">new student </a>
+
 <div id="main">
 <?php
 
@@ -127,5 +129,6 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
 </script>
+
 </body>
 </html>

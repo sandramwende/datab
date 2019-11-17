@@ -65,6 +65,7 @@ padding: 16px;
 }
 </style>
 <body>
+
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <a href="home.php">Home</a>
@@ -76,6 +77,7 @@ padding: 16px;
 <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; menu</span>
 
 </div>
+<a class="btn btn-success" href="#" role="button">new student </a>
 
 <script>
 function openNav() {
