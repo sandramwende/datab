@@ -77,7 +77,7 @@ body {
 <div id="main">
 <?php
 
-$connection = mysqli_connect("localhost","rot","","CSC316");
+$connection = mysqli_connect("localhost","root","","CSC316");
 
 
 $sql = "SELECT * FROM units";
