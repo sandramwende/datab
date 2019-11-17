@@ -100,7 +100,8 @@ if (mysqli_num_rows($result) > 0) {
     	echo "<td>".$row["UNIT_CODE"]."</td>";
     	echo "<td>".$row["UNIT_STATUS"]."</td>";
     	echo "<td>"
-        . "<button><a href=students.php?id=".$row["UNIT_ID"].">View Students</a></button>"
+        . "<button class='btn'><a href=students.php?id=".$row["UNIT_ID"].">view Students</a></button>"
+                . "<button class='btn'><a href=students.php?id=".$row["UNIT_ID"].">view Students</a></button>"
                 . "</td>";
     	echo "</tr>";
           	
