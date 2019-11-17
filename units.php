@@ -85,8 +85,8 @@ $sql = "SELECT * FROM units";
 $result = mysqli_query($connection, $sql);
 //count rows
  
-echo "<table border=1><thead class="thead-dark"><tr><th scope="col">Unit Id</th><th scope="col">Unit Name</th><th scope="col">Unit Code</th><th scope="col">Status</th><th scope="col">Action</th></tr>";
-</thead>
+echo "<table border=1><thead class='thead-dark'><tr><th scope='col'>Unit Id</th><th scope='col'>Unit Name</th><th scope='col'>Unit Code</th><th scope='col'>Status</th><th scope='col'>Action</th></thead></tr>";
+//</thead>
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row

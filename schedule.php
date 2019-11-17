@@ -10,13 +10,17 @@
 </head>
 <body bgcolor="black">
 <H1><FONT COLOR="white"><CENTER>SCHEDULE</FONT></H1>
+<th scope="col">#</th>
+ <table class="table">
+  <thead>
 <table border="1" cellspacing="3" align="center">
 <tr>
- <td align="center">
- <td>8:00-11:00
- <td>11:10-13:10
- <td>13:10-14:20
- <td>14:20-17:20
+ <th scope="col">#</th>
+  <th scope="col">8:00-11:00</th>
+   <th scope="col">11:10-13:10 </th>
+    <th scope="col">13:10-14:20</th>
+     <td>14:20-17:20
+ 
 </tr>
 <tr>
  <td align="center">MONDAY
