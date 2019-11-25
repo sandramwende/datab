@@ -77,7 +77,7 @@ padding: 16px;
 <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; menu</span>
 
 </div>
-<a class="btn btn-success" href="#" role="button">new student </a>
+<a class="btn btn-success" href="add.php" role="button">new student </a>
 
 <script>
 function openNav() {
@@ -91,18 +91,18 @@ function closeNav() {
 }
 </script>
 
-
+<div class="container-fluid">
 <?php
     
     $connection = mysqli_connect("localhost","root","","csc316");
     if(isset($_GET['id'])){
         //echo $_GET['id'];
-        $query="SELECT * FROM st as a,units as b where a.ST_UNIT=b.UNIT_ID and a.ST_UNIT=".$_GET['id']."";
+        $query="SELECT * FROM st as a,units as b where a.ST_UNIT=b.UNIT_ID and a.ST_UNIT=".$_GET['id']." and ST_STATUS = 1";
     }
     else{
-        $query = "SELECT * FROM st as a,units as b where b.UNIT_ID = a.ST_UNIT";
+        $query = "SELECT * FROM st as a,units as b where b.UNIT_ID = a.ST_UNIT  and ST_STATUS = 1";
     }
-    echo "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Student Id</th><th scope='col'>Name</th><th scope='col'>Unit</th><th scope='col'>Status</th></thead></tr>";
+    echo "<table class='table' border=1><thead class='thead-dark'><tr><th scope='col'>Student Id</th><th scope='col'>Name</th><th scope='col'>Unit</th><th scope='col'>Status</th></thead></tr>";
     $result = mysqli_query($connection,$query);
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
@@ -111,16 +111,20 @@ function closeNav() {
             echo "<td>".$row["ST_NAME"]."</td>";
             echo "<td>".$row["UNIT_NAME"]."</td>";
             echo "<td>".$row["ST_STATUS"]."</td>";
+            echo "<td>"
+              //. "<button class='btn'><a href=students.php?id=".$row["UNIT_ID"].">view Students</a></button>"
+                . "<button class='btn'><a href=deletestudent.php?id=".$row["ST_ID"].">Delete Student</a></button>"
+                . "</td>";
             
             echo "</tr>";
             // echo "Adm: " . $row["ST_ID"]. " - FName: " . $row["ST_NAME"]. " LName" . $row["UNIT_NAME"]."Fee: ".$row['ST_STATUS']. "<br><br>";
         }
         echo "</table>";
     } else {
-        echo "0 results";
+        echo "Add Students to unit";
     }
     ?>
-
+</div>
 
 </body>
 </html>

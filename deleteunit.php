@@ -6,16 +6,13 @@ session_start();
 if ($conn) {
 	# code...
 
-$username=$_POST['username'];
-$password=md5($_POST['password']);
+$id=$_GET['id'];
 
-$q="insert into student(username,password)VALUES ('$username', '$password')";
+$q= "UPDATE UNITS SET UNIT_STATUS= 2 WHERE UNIT_ID=$id";
 $processq=mysqli_query($conn,$q);
 if ($processq) {
  	# code...
- 	echo "new user added successfully";
- 	$_SESSION['usernamesession']=$username;
- 	echo "$username";
+ 	header("location:units.php");
  }
 else{
 	echo "connection failed";
@@ -23,5 +20,46 @@ else{
 }
 
 //echo "the username is: ".$username." password: ".$password.";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="assets/stylesheets/pages.min.css">
  <link href="assets/stylesheets/landerapp.min.css" rel="stylesheet" type="text/css">
@@ -13,11 +14,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    function onclicked(){
-  if(confirm('Please confirm you want to delete this item')){ return true;}else{return false;}
-}
-  </script>
+
+  	<title></title>
+  
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -67,63 +66,62 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
-	<title></title>
-</head>
-<body>
-	<div id="mySidenav" class="sidenav">
+  </head>
+<?php
+$connection = mysqli_connect("localhost","root","","CSC316");
+$sql = "SELECT * FROM units where UNIT_STATUS = 1";
+
+$result = mysqli_query($connection, $sql);
+
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+       
+  }
+} else {
+    echo "0 results";
+}
+?>
+  <body>
+  	
+  	<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.php">Home</a>
   <a href="schedule.php">Schedule</a>
   <a href="units.php">Units</a>
   <a href="students.php">Students</a>
 </div>
-
-
-
-<div id="main">
-<?php
-
-$connection = mysqli_connect("localhost","root","","CSC316");
-
-
-$sql = "SELECT * FROM units ";
-
-$result = mysqli_query($connection, $sql);
-//count rows
-$conf = "if(confirm('Please confirm you want to delete this item')){ return true;}else{return false;}";
-
-echo "<table border=1 class='table'><thead class='thead-dark'><tr><th scope='col'>Unit Id</th><th scope='col'>Unit Name</th><th scope='col'>Unit Code</th><th scope='col'>Status</th><th scope='col'>Action</th></thead>
-</tr>";
-
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-    	 
-      if ($row["UNIT_STATUS"] == 1) {
-        $state = "ACTIVE";
-     }else{
-      $state = "DROPPED";
-     }
-    	echo "<tr>";
-    	echo "<td scope='row'>".$row["UNIT_ID"]."</td>";
-    	echo "<td>".$row["UNIT_NAME"]."</td>";
-    	echo "<td>".$row["UNIT_CODE"]."</td>";
-    	echo "<td>".$state."</td>";
-    	echo "<td>"
-        . "<button class='btn'><a href=students.php?id=".$row["UNIT_ID"].">view Students</a></button>"
-                . "<button  class='btn'><a href=deleteunit.php?id=".$row["UNIT_ID"].">Drop unit</a></button>"
-                . "</td>";
-    	echo "</tr>";
-          	
-        // echo "ID: " . $row["UNIT_ID"]. " - Unit name: " . $row["UNIT_NAME"]. " Code" . $row["UNIT_CODE"]."Status: ".$row['UNIT_STATUS']. "
-        // <a href='students.php?id=".$row["UNIT_ID"]."'><br><br>";
-    }
-} else {
-    echo "0 results";
-}
-?>
-</div>
+	<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">AFRICAN NAZERENE UNIVERSITY</a>
+</nav>
   <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; menu</span>
+
+<!-- As a heading -->
+<nav class="navbar navbar-light bg-light container">
+  <span class="navbar-brand mb-0 h1">Student details</span>
+</nav>
+
+
+  	<form class="form-group container bg-light" action="newstudent.php" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Student Name</label>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="student Name">
+    
+  </div>
+  <div class="form-group">
+    <label for="unit_id">UNIT_CODE</label>
+
+    <select name="unit_id" id="unit_id" class="form-control">
+      <?php
+      foreach ($result as $cnm) {
+      echo '<option value="' . $cnm['UNIT_ID'] . '">' . $cnm['UNIT_NAME'] . '</option> ';
+      }   
+      ?>
+</select>
+  </div>
+  <button type="submit" href="students.php" class="btn btn-success">Submit</button>
+</form>
 
 </div>
 
@@ -137,8 +135,9 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
+</script> 
+  </body>
+  </html>
 
-</script>
-<a class="btn btn-success" href="addunit.php" role="button">Add Unit</a>
-</body>
-</html>
+
+  
